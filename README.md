@@ -1,2 +1,2 @@
 # kiwi-scripts
-脚手架
+Build the project according to the project folder structure
