@@ -1,0 +1,44 @@
+{
+  "name": "kiwi-scripts",
+  "version": "0.0.1",
+  "description": "kiwi",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuexihuachen/kiwi-scripts.git"
+  },
+  "author": "longwang",
+  "engines": {
+    "node": ">= 16",
+    "npm": ">= 8"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuexihuachen/kiwi-scripts/issues"
+  },
+  "homepage": "https://github.com/yuexihuachen/kiwi-scripts#readme",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-proposal-throw-expressions": "^7.22.5",
+    "@babel/plugin-syntax-optional-catch-binding": "^7.8.3",
+    "@babel/plugin-transform-numeric-separator": "^7.22.5",
+    "@babel/plugin-transform-optional-chaining": "^7.22.10",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "babel-plugin-macros": "^3.1.0",
+    "cross-spawn": "^7.0.3",
+    "inquirer": "^9.2.10",
+    "npm-which": "^3.0.1",
+    "which": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/register": "^7.22.5"
+  }
+}
