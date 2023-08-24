@@ -1,16 +1,23 @@
 import spawn from "cross-spawn";
 import path from "path";
-import {resolveBin} from "./utils"
+import {resolveBin} from "./utils";
 
-/**
- * 
- * @param {String} script 
- * @param {Object} args spawnOptions 
- */
-function kiwiScript(script, {
+
+interface Env {
+    [key: string]: string
+}
+
+type ScriptOptios = {
+    args?: string[]
+    spawnOptions?: {
+        env?: Env
+    }
+}
+
+function kiwiScript(script: string, {
     args = [],
     spawnOptions = {}
-}) {
+}: ScriptOptios = {}) {
 
 
     const scriptPath = path.join(__dirname, './scripts', script);
@@ -20,9 +27,11 @@ function kiwiScript(script, {
     }
 
     const bin = resolveBin('node');
-    
+    // console.log('************************************************************')
+    // console.log(scriptPath)
     const result = spawn.sync(bin, [scriptPath, ...args], { stdio: 'inherit', ...spawnOptions })
 
+    
     if (result.signal) {
         process.exit(1)
     } else {

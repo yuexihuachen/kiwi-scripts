@@ -9,7 +9,7 @@ require("@babel/register")({
     ...require('../babel.config')
 })
 
-const { kiwiScript } =  require("./kiwi-script.js");
+const { kiwiScript } =  require("./kiwi-script.ts");
 
 const [, bin, script, ...args] = process.argv
 

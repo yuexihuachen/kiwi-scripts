@@ -1,16 +1,18 @@
 import which from 'which';
 import npmWhich from 'npm-which';
 import fs from "fs";
-import path from "path";
-import resolve from "resolve";
 
 const cwd = process.cwd();
 
-function resolveBin(nodeName,options = {}) {
-    const {
-        givenCWD = cwd,
-        fullPath = false,
-    } = options
+type ResolveBinOptions = {
+    givenCWD?: string
+    fullPath?: boolean
+  }
+
+function resolveBin(nodeName: string,{
+    givenCWD = cwd,
+    fullPath = false,
+}: ResolveBinOptions = {}) {
     const originalCWD = process.cwd()
     try {
         //更改 Node.js 进程的当前工作目录
@@ -40,17 +42,9 @@ function resolveBin(nodeName,options = {}) {
         // ignore error
     }
     // 没有找到node可执行文件
-    const modPkgPath = resolve.sync(path.join("..", 'package.json'), {
-        basedir: __dirname,
-    })
-    const modPkgDir = path.dirname(modPkgPath)
-    const { bin, name } = require(modPkgPath)
-
-    const binPath = typeof bin === 'string' ? bin : bin[name]
-    const fullPathToBin = path.join(modPkgDir, binPath)
     // console.log('************************************************************')
-    // console.log(fullPathToBin, fullPathToBin.replace(givenCWD, '.'))
-    return fullPath ? fullPathToBin : fullPathToBin.replace(givenCWD, '.')
+    // console.log(__dirname, fullPathToBin.replace(__dirname, '.'))
+    return nodeName
 }
 
 export {
