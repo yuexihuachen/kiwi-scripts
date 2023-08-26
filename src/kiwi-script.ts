@@ -1,6 +1,6 @@
 import spawn from "cross-spawn";
 import path from "path";
-import {resolveBin} from "./utils";
+import { resolveBin } from "./utils";
 
 
 interface Env {
@@ -31,7 +31,7 @@ function kiwiScript(script: string, {
     // console.log(scriptPath)
     const result = spawn.sync(bin, [scriptPath, ...args], { stdio: 'inherit', ...spawnOptions })
 
-    
+
     if (result.signal) {
         process.exit(1)
     } else {
