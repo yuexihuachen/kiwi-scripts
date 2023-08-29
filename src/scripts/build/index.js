@@ -1,22 +1,14 @@
 require("../../babel-register")
-
-const spawn = require("cross-spawn");
-const { hasFile, resolveBin } = require("../../utils")
+const path = require("path");
+const { hasFile } = require("../../utils")
 
 const args = process.argv.slice(2)
+const here = (p) => path.join(__dirname, p)
 
-const isApp = hasFile('client/package.json')
+const isApp = hasFile('client/package.json');
+console.log(...['--config', here('../../config/webpack.config')])
 if (isApp) {
-    const result = spawn.sync(
-        resolveBin('webapck'),
-        {
-            stdio: 'inherit',
-            env: {
-            },
-        },
-    )
-
-    process.exit(result.status)
+    require('./client')
 } else {
     require('./babel')
 }

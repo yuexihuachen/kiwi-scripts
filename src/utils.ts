@@ -50,7 +50,7 @@ function resolveBin(nodeName: string,{
     return nodeName
 }
 
-const rootDir = path.dirname(cwd)
+const rootDir = process.cwd()
 const fromRoot = (...p: string[]) => path.join(rootDir, ...p)
 const hasFile = (...p: string[]) => fs.existsSync(fromRoot(...p))
 
