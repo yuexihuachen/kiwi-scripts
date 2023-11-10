@@ -12,7 +12,7 @@ function kiwiScript(script, {
     }
     
     const bin = 'node' //resolveBin('node');
-    console.log(bin, [scriptPath, ...args], { stdio: 'inherit', ...spawnOptions })
+
     const result = spawn.sync(bin, [scriptPath, ...args], { stdio: 'inherit', ...spawnOptions })
 
     if (result.signal) {

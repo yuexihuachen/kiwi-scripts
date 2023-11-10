@@ -1,21 +1,19 @@
 const spawn = require("cross-spawn");
 
 const scripts = {
-    client: `${('kiwi-scripts')} dev/client `,
-    server: `${('kiwi-scripts')} dev/server `,
+    client: `${('kiwi-scripts')} dev/client`,
+    server: `${('kiwi-scripts')} dev/server`,
 }
 const options = [
-    '--kill-others-on-fail',
-    '--handle-input',
-    '--prefix', '[{name}]',
-    '--names', Object.keys(scripts).join(','),
+    '-k', //Kill other processes if one exits or dies
+    '-i', //Whether input should be forwarded to the child processes. See examples for more information.
+    '-p', '[{name}-{pid}]',
+    '-n', Object.keys(scripts).join(','),
     ...Object.values(scripts).map(s => JSON.stringify(s))
   ]
 
-  console.log(options)
-
 const result = spawn.sync(
-    ('concurrently'),
+    'concurrently',
     options,
     {
         stdio: 'inherit',
