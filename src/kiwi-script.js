@@ -11,6 +11,8 @@ function kiwiScript(script, {
         throw new Error(`Unknown script "${script}".`)
     }
     
+    
+
     const bin = 'node' //resolveBin('node');
     const result = spawn.sync(bin, [scriptPath, ...args], { stdio: 'inherit', ...spawnOptions })
 

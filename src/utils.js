@@ -45,10 +45,8 @@ function resolveBin(nodeName,{
     return nodeName
 }
 
-
-
 function getUtils(cwd = process.cwd()) {
-    const { packageJson = {}, path: pkgPath } = readPkgUp.sync({
+    const { path: pkgPath } = readPkgUp.sync({
         cwd: fs.realpathSync(cwd),
     })
      console.log(pkgPath)
@@ -94,7 +92,6 @@ function utilsFor(subdir = 'client') {
       subDirUtils = getUtils(subDirUtils.fromRoot(subdir))
     }
     return subDirUtils
-    
 }
 
 function removeEmpty(input) {
