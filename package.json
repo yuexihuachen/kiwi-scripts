@@ -69,6 +69,6 @@
     "webpack-cli": "^5.1.4"
   },
   "bin": {
-    "kiwi-scripts": "./src/index.js"
+    "kiwi-scripts": "./src/bin.js"
   }
 }

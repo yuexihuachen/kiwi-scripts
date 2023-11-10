@@ -49,7 +49,7 @@ function getUtils(cwd = process.cwd()) {
     const { path: pkgPath } = readPkgUp.sync({
         cwd: fs.realpathSync(cwd),
     })
-     console.log(pkgPath)
+
     const rootDir = path.dirname(pkgPath || cwd)
     
     const fromRoot = (...p) => path.join(rootDir, ...p)

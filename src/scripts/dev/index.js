@@ -1,10 +1,9 @@
 const spawn = require("cross-spawn");
 
 const scripts = {
-    client: `node dev/client `,
-    server: `node dev/server `,
+    client: `${('kiwi-scripts')} dev/client `,
+    server: `${('kiwi-scripts')} dev/server `,
 }
-
 const options = [
     '--kill-others-on-fail',
     '--handle-input',
@@ -12,6 +11,8 @@ const options = [
     '--names', Object.keys(scripts).join(','),
     ...Object.values(scripts).map(s => JSON.stringify(s))
   ]
+
+  console.log(options)
 
 const result = spawn.sync(
     ('concurrently'),

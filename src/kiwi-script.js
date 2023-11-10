@@ -6,14 +6,13 @@ function kiwiScript(script, {
     spawnOptions = {}
 }) {
     const scriptPath = path.join(__dirname, './scripts', script);
-
+    
     if (!scriptPath) {
         throw new Error(`Unknown script "${script}".`)
     }
     
-    
-
     const bin = 'node' //resolveBin('node');
+    console.log(bin, [scriptPath, ...args], { stdio: 'inherit', ...spawnOptions })
     const result = spawn.sync(bin, [scriptPath, ...args], { stdio: 'inherit', ...spawnOptions })
 
     if (result.signal) {

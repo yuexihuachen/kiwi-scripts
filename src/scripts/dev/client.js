@@ -1,17 +1,17 @@
-console.log("client")
+require("../../babel-register")
+const path = require("path");
+const spawn = require("cross-spawn");
 
-// const { fromRoot, spawnSync } = require('../../utils')
+const here = (p) => path.join(__dirname, p)
 
-// const result = spawnSync(
-//     'webpack',
-//     ['serve', '--config', webpackConfig, ...args],
-//     {
-//       stdio: 'inherit',
-//       cwd: fromRoot('client'),
-//       env: Object.assign({ BUILD_WEBPACK: true }, process.env),
-//     },
-//   )
+const result = spawn.sync(
+    'webpack',
+    [
+        ...['--config', here('../../config/webpack.config')]
+    ],
+    {
+        stdio: 'inherit',
+    },
+)
 
-//   process.exit(result.status)
-
-module.exports = {}
+process.exit(result.status)
