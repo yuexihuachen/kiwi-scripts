@@ -44,6 +44,7 @@
     "kiwi-environment": "^0.0.1",
     "nodemon": "^3.0.1",
     "npm-which": "^3.0.1",
+    "nunjucks": "^3.2.4",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.1.1",
     "read-pkg-up": "^7.0.1",
@@ -53,6 +54,7 @@
     "typescript": "^5.1.6",
     "url-loader": "^4.1.1",
     "webpack": "^5.88.2",
+    "webpack-dev-server": "^4.15.1",
     "webpack-manifest-plugin": "^5.0.0",
     "which": "^3.0.1",
     "yargs-parser": "^21.1.1"

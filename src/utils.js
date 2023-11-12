@@ -72,13 +72,22 @@ function getUtils(cwd = process.cwd()) {
         hasFile('server/tsconfig.json')
 
     const isApp = true
+
+    const serverDirConfig = hasFile('.nodeops')
+    ? fromRoot('.nodeops')
+    : { serverDirectory: 'server' }
+    
+  const serverDir = fromRoot(serverDirConfig.serverDirectory || 'server')
+
+
     return {
         isTypeScript,
         rootDir,
         fromRoot,
         hasFile,
         firstFile,
-        isApp
+        isApp,
+        serverDir
     }
 }
 
@@ -114,5 +123,6 @@ function removeEmpty(input) {
     resolveBin,
     getUtils,
     utilsFor,
-    removeEmpty
+    removeEmpty,
+    ...defaultUtils,
 }
