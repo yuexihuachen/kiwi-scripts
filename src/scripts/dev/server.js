@@ -3,8 +3,6 @@ const path = require("path");
 const spawn = require("cross-spawn");
 const { serverDir } = require("../../utils")
 
-console.log('server')
-
 const result = spawn.sync(
     'nodemon',
     [

@@ -13,7 +13,14 @@ app.use(async (ctx, next) => {
 app.use(helmet({
     contentSecurityPolicy: {
       directives: {
-        "script-src":["'self'", "'unsafe-inline'", "'unsafe-eval'", 'http://localhost:*', 'http://*.kiwi.com:*', 'https://*.kiwi.com']
+        "default-src": "'self' https://*.kiwi.com https://*.kiwiobjects.com 'unsafe-inline'",
+        "style-src": "'self' blob: https://*.kiwi.com https://*.kiwiobjects.com 'unsafe-inline'",
+        "img-src": "'self' * data:",
+        "object-src": "'self' https://*.kiwi.com https://*.kiwiobjects.com",
+        "font-src": "'self' https://*.kiwiobjects.com",
+        "frame-src": "'self' https://*.kiwiobjects.com https://*.kiwi.com",
+        "connect-src": "'self' 'unsafe-inline' 'unsafe-eval' ws://localhost:* ws://*.kiwi.com:* http://localhost:* http://*.kiwi.com:* https://*.kiwi.com https://*.kiwiobjects.com http://www.kiwiobjects.com",
+        "script-src": "'self' 'unsafe-inline' 'unsafe-eval' http://localhost:* http://*.kiwi.com:* https://*.kiwi.com https://*.kiwiobjects.com http://www.kiwiobjects.com"
       },
     },
   }))
@@ -35,11 +42,12 @@ app.use(async ctx => {
   <html lang="en">
   <head>
       <title>My Webpage</title>
+      <script src="http://localhost:7975/bundle.js" crossorigin nonce type="module"></script>
   </head>
   <body>
   
       <h1>My Webpage</h1>
-      <script src="http://localhost:7975/bundle.js" crossorigin="anonymous"></script>
+      
   </body>
   </html>`)
   ctx.body = html
